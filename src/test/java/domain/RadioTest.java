@@ -8,42 +8,42 @@ class RadioTest {
 
 
     @Test
-    void shouldPrevStationIfMoreNine() {
+    void shouldPrevStationIfMoreMaxStation() {
         Radio radio = new Radio();
-        int expected = 9;
-        radio.setCurrentStation(10);
+        int expected = 0;
+        radio.setCurrentStation = this.maxStation + 5;
         radio.pushPrevStation();
-        int actual = radio.getCurrentStation() ;
+        int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldPrevStationIfLessZero() {
         Radio radio = new Radio();
-        int expected = 9;
+        int expected = this.maxStation;
         radio.setCurrentStation(-1);
         radio.pushPrevStation();
-        int actual = radio.getCurrentStation() ;
+        int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
     }
 
     @Test
     void shouldPrevStationIfZero() {
-     Radio radio = new Radio();
-     int expected = 9;
-     radio.setCurrentStation(0);
-     radio.pushPrevStation();
-     int actual = radio.getCurrentStation() ;
-     assertEquals(expected, actual);
+        Radio radio = new Radio();
+        int expected = this.maxStation;
+        radio.setCurrentStation(0);
+        radio.pushPrevStation();
+        int actual = radio.getCurrentStation();
+        assertEquals(expected, actual);
     }
 
     @Test
-    void shouldPrevStationIfNine() {
+    void shouldPrevStationIfMaxStation() {
         Radio radio = new Radio();
-        int expected = 8;
-        radio.setCurrentStation(9);
+        int expected = this.maxStation - 1;
+        radio.setCurrentStation = this.maxStation;
         radio.pushPrevStation();
-        int actual = radio.getCurrentStation() ;
+        int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
     }
 
@@ -51,19 +51,20 @@ class RadioTest {
     void shouldPrevStationIfBetweenStations() {
         Radio radio = new Radio();
         int expected = 4;
+        radio.setMaxStation = this.maxStation;
         radio.setCurrentStation(5);
         radio.pushPrevStation();
-        int actual = radio.getCurrentStation() ;
+        int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldNextStationIfNine() {
+    void shouldNotNextStationIfMaxStation() {
         Radio radio = new Radio();
         int expected = 0;
-        radio.setCurrentStation(9);
+        radio.setCurrentStation = this.maxStation;
         radio.pushNextStation();
-        int actual = radio.getCurrentStation() ;
+        int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
     }
 
@@ -73,7 +74,7 @@ class RadioTest {
         int expected = 1;
         radio.setCurrentStation(0);
         radio.pushNextStation();
-        int actual = radio.getCurrentStation() ;
+        int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
     }
 
@@ -81,9 +82,10 @@ class RadioTest {
     void shouldNextStationBetweenBoders() {
         Radio radio = new Radio();
         int expected = 6;
+        radio.setMaxStation = this.maxStation;
         radio.setCurrentStation(5);
         radio.pushNextStation();
-        int actual = radio.getCurrentStation() ;
+        int actual = radio.getCurrentStation();
         assertEquals(expected, actual);
     }
 
@@ -93,82 +95,69 @@ class RadioTest {
         int expected = 1;
         radio.setCurrentVolume(0);
         radio.increaseVolume();
-        int actual = radio.getCurrentVolume() ;
+        int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldIncreaseVolumeifMoreTen() {
+    void shouldNotIncreaseVolumeifMoreTen() {
         Radio radio = new Radio();
-        int expected = 1;
-        radio.setCurrentVolume(11);
+        int expected = 100;
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        int actual = radio.getCurrentVolume() ;
+        int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
 
     @Test
-    void shouldIncreaseVolumeifTen() {
+    void shouldNotIncreaseVolumeifHundred() {
         Radio radio = new Radio();
-        int expected = 10;
-        radio.setCurrentVolume(10);
+        int expected = 100;
+        radio.setCurrentVolume(100);
         radio.increaseVolume();
-        int actual = radio.getCurrentVolume() ;
+        int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldIncreaseVolumeBetweenBoders() {
         Radio radio = new Radio();
-        int expected = 6;
-        radio.setCurrentVolume(5);
+        int expected = 51;
+        radio.setCurrentVolume(50);
         radio.increaseVolume();
-        int actual = radio.getCurrentVolume() ;
+        int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
+
     @Test
     void shouldDecreaseVolumeBetweenBoders() {
         Radio radio = new Radio();
-        int expected = 4;
-        radio.setCurrentVolume(5);
+        int expected = 49;
+        radio.setCurrentVolume(50);
         radio.decreaseVolume();
-        int actual = radio.getCurrentVolume() ;
+        int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
+
     @Test
-    void shouldDecreaseVolumeIfZero() {
+    void shouldNotDecreaseVolumeIfZero() {
         Radio radio = new Radio();
         int expected = 0;
         radio.setCurrentVolume(0);
         radio.decreaseVolume();
-        int actual = radio.getCurrentVolume() ;
+        int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
+
     @Test
-    void shouldDecreaseVolumeIfTen() {
+    void shouldDecreaseVolumeIfHundred() {
         Radio radio = new Radio();
-        int expected = 9;
-        radio.setCurrentVolume(10);
+        int expected = 99;
+        radio.setCurrentVolume(100);
         radio.decreaseVolume();
-        int actual = radio.getCurrentVolume() ;
+        int actual = radio.getCurrentVolume();
         assertEquals(expected, actual);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 }

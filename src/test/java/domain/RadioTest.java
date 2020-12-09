@@ -5,7 +5,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class RadioTest {
-
+    Radio radio = new Radio();
 
     @Test
     void shouldPrevStationIfMoreMaxStation() {
@@ -149,7 +149,6 @@ class RadioTest {
 
     @Test
     void shouldDecreaseVolumeIfHundred() {
-        Radio radio = new Radio();
         int expected = radio.getMaxVolume()-1;
         radio.setCurrentVolume(radio.getMaxVolume());
         radio.decreaseVolume();

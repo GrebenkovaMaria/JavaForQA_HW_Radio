@@ -129,7 +129,6 @@ class RadioTest {
 
     @Test
     void shouldDecreaseVolumeBetweenBoders() {
-        Radio radio = new Radio();
         int expected = radio.getCurrentVolume()-1;
         radio.setCurrentVolume((radio.getMinVolume()+ radio.getMaxVolume())/2);
         radio.decreaseVolume();
@@ -139,8 +138,7 @@ class RadioTest {
 
     @Test
     void shouldNotDecreaseVolumeIfZero() {
-        Radio radio = new Radio();
-        int expected = radio.getMinVolume();
+                int expected = radio.getMinVolume();
         radio.setCurrentVolume(radio.getMinVolume());
         radio.decreaseVolume();
         int actual = radio.getCurrentVolume();

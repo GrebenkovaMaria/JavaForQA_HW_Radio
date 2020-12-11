@@ -10,16 +10,6 @@ class RadioTest {
 
 
     @Test
-    void shouldNotNextStationIfMoreMax() {
-        Radio radio = new Radio();
-        radio.setCurrentStation(radio.getMaxStation()+1);
-        int expected = radio.getMinStation();
-        radio.pushNextStation();
-        int actual = radio.getCurrentStation();
-        assertEquals(expected, actual);
-    }
-
-    @Test
     void shouldPrevStationIfLessZero() {
         Radio radio = new Radio();
         int expected = radio.getMaxStation();
@@ -110,15 +100,6 @@ class RadioTest {
         assertEquals(expected, actual);
     }
 
-    @Test
-    void shouldNotIncreaseVolumeifMoreMax() {
-        Radio radio = new Radio();
-        radio.setCurrentVolume(radio.getMaxVolume()+1);
-        int expected = 0;
-        radio.increaseVolume();
-        int actual = radio.getCurrentVolume();
-        assertEquals(expected, actual);
-    }
 
     @Test
     void shouldIncreaseVolumeBetweenBoders() {

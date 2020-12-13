@@ -4,10 +4,20 @@ public class Radio {
     private String name;
     private int currentStation;
     private int currentVolume;
-    private int maxStation = 10;
-    private int minStation = 0;
-    private int maxVolume = 100;
-    private int minVolume = 0;
+    private int maxStation;
+    private int minStation;
+    private int maxVolume;
+    private int minVolume;
+
+    public Radio() {
+    }
+
+    public Radio(int maxStation, int minStation, int maxVolume, int minVolume) {
+        this.maxStation = maxStation;
+        this.minStation = minStation;
+        this.maxVolume = maxVolume;
+        this.minVolume = minVolume;
+    }
 
 
     public int getMinStation() {
